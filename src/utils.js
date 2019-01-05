@@ -33,7 +33,10 @@ utils.printResults = (scores, rounds) => {
       // do nothing
   }
 };
-// utils.checkAnswer = (answer, rightAnswer) => {
-//   if (answer === rightAnswer) return
-// }
+
+utils.sumArrElements = (arr) => {
+  const arrOfNumbers = arr.map(elt => +elt);
+  return arrOfNumbers.reduce((sum, elt) => sum + elt);
+};
+
 export default utils;
