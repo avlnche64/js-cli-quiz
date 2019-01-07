@@ -16,21 +16,14 @@ utils.checkAnswer = (userAnswer, rightAnswer) => {
 
 utils.printResults = (scores, rounds) => {
   const ratio = scores / rounds;
-  switch (true) {
-    case (ratio === 1):
-      console.log(`Congradulations! You gave ${scores} correct answers.`);
-      break;
-    case (ratio >= 0.6):
-      console.log(`Not bad! You gave ${scores} correct answers.`);
-      break;
-    case (ratio >= 0.3):
-      console.log(`You gave ${scores} correct answers. You should make more efforts next time`);
-      break;
-    case (ratio >= 0):
-      console.log(`Sorry :( You gave ${scores} correct answers. Please try again`);
-      break;
-    default:
-      // do nothing
+  if (ratio === 1) {
+    console.log(`Congratulations! You gave ${scores} correct answers.`);
+  } else if (ratio >= 0.6) {
+    console.log(`Not bad! You gave ${scores} correct answers.`);
+  } else if (ratio >= 0.3) {
+    console.log(`You gave ${scores} correct answers. You should make more efforts next time`);
+  } else {
+    console.log(`Sorry :( You gave ${scores} correct answers. Please try again`);
   }
 };
 
