@@ -12,7 +12,7 @@ const isPrime = (num) => {
 const description = 'Enter "yes" if the number is prime and "no" otherwise';
 const playRound = () => {
   const number = utils.getRandomNum(1, 25);
-  const userAnswer = readlineSync.question(`Is ${number} is prime?  `);
+  const userAnswer = readlineSync.question(`Is ${number} a prime number? `);
   const rightAnswer = isPrime(number) ? 'yes' : 'no';
   return utils.checkAnswer(userAnswer, rightAnswer);
 };
