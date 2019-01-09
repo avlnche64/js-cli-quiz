@@ -32,4 +32,14 @@ utils.sumArrElements = (arr) => {
   return arrOfNumbers.reduce((sum, elt) => sum + elt);
 };
 
+utils.getGreatestCommonDivisor = (firstNum, secondNum) => {
+  let result = 1;
+  for (let i = 2; i <= firstNum && i <= secondNum; i += 1) {
+    if (firstNum % i === 0 && secondNum % i === 0) {
+      result = i;
+    }
+  }
+  return result;
+};
+
 export default utils;
