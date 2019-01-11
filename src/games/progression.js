@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import utils from '../utils';
+import * as utils from '../utils';
 
 const createRandomProgression = (length = 10) => {
   const difference = utils.getRandomNum(2, 9);

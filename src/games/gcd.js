@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import utils from '../utils';
+import * as utils from '../utils';
 
 const description = '\nFind the greatest common divisor (GCD) of two numbers';
 const playRound = () => {

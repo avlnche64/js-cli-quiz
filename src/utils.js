@@ -1,11 +1,9 @@
-const utils = {};
-
-utils.getRandomNum = (min, max) => {
+export const getRandomNum = (min, max) => {
   const result = min + Math.floor(Math.random() * (max + 1 - min));
   return result;
 };
 
-utils.checkAnswer = (userAnswer, rightAnswer) => {
+export const checkAnswer = (userAnswer, rightAnswer) => {
   if (userAnswer === rightAnswer) {
     console.log('Correct!');
     return true;
@@ -14,7 +12,7 @@ utils.checkAnswer = (userAnswer, rightAnswer) => {
   return false;
 };
 
-utils.printResults = (scores, rounds) => {
+export const printResults = (scores, rounds) => {
   const ratio = scores / rounds;
   if (ratio === 1) {
     console.log(`Congratulations! You gave ${scores} correct answers.`);
@@ -27,12 +25,12 @@ utils.printResults = (scores, rounds) => {
   }
 };
 
-utils.sumArrElements = (arr) => {
+export const sumArrElements = (arr) => {
   const arrOfNumbers = arr.map(elt => +elt);
   return arrOfNumbers.reduce((sum, elt) => sum + elt);
 };
 
-utils.getGreatestCommonDivisor = (firstNum, secondNum) => {
+export const getGreatestCommonDivisor = (firstNum, secondNum) => {
   let result = 1;
   for (let i = 2; i <= firstNum && i <= secondNum; i += 1) {
     if (firstNum % i === 0 && secondNum % i === 0) {
@@ -41,5 +39,3 @@ utils.getGreatestCommonDivisor = (firstNum, secondNum) => {
   }
   return result;
 };
-
-export default utils;

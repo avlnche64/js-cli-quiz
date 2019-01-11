@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import utils from '../utils';
+import * as utils from '../utils';
 
 const isPrime = (num) => {
   if (num === 1) return false;

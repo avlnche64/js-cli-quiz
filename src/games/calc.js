@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import utils from '../utils';
+import * as utils from '../utils';
 
 const getExpression = (numberOfSummands) => {
   const summands = [];
