@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
 import * as utils from '../utils';
+import { createGameLauncher, createGameRound } from '../game-engine';
 
-const createRandomProgression = (length = 10) => {
+const getRandomProgression = (length = 10) => {
   const difference = utils.getRandomNum(2, 9);
   const firstMember = utils.getRandomNum(2, 49);
   const result = [];
@@ -11,30 +11,24 @@ const createRandomProgression = (length = 10) => {
   return result;
 };
 
-const missProgressionMember = (progression) => {
+const getProgressionWithMissingMember = () => {
+  const progression = getRandomProgression();
   const missingMemberIndex = utils.getRandomNum(1, progression.length - 2);
-  const result = progression.map((elt, i) => (i === missingMemberIndex ? '...' : elt));
-  result.missingMember = progression[missingMemberIndex];
-  return result;
+  return progression.map((elt, i) => (i === missingMemberIndex ? '...' : elt));
 };
 
 const description = '\nFind the missing member of the progression';
-const playRound = () => {
-  const progression = missProgressionMember(createRandomProgression());
-  const progressionString = progression.join(' ');
-  const userAnswer = +readlineSync.question(`Progression: ${progressionString}\nMissing member: `);
-  const rightAnswer = progression.missingMember;
-  return utils.checkAnswer(userAnswer, rightAnswer);
+const getQuestion = () => getProgressionWithMissingMember().join(' ');
+const getRightAnswer = (question) => {
+  const progression = question.split(' ');
+  let indexOfMissing = 0;
+  progression.forEach((elt, i) => {
+    if (elt === '...') indexOfMissing = i;
+  });
+  return `${(+progression[indexOfMissing - 1] + +progression[indexOfMissing + 1]) / 2}`;
 };
 
-const playGame = () => {
-  const rounds = 3;
-  let scores = 0;
-  console.log(description);
-  for (let i = 0; i < rounds; i += 1) {
-    if (playRound()) scores += 1;
-  }
-  utils.printResults(scores, rounds);
-};
+const playRound = createGameRound(getQuestion, getRightAnswer);
+const startGame = createGameLauncher(3, description, playRound);
 
-export default playGame;
+export default startGame;
