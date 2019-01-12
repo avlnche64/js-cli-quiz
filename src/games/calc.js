@@ -1,5 +1,5 @@
-import readlineSync from 'readline-sync';
 import * as utils from '../utils';
+import { createGameLauncher, createGameRound } from '../game-engine';
 
 const getExpression = (numberOfSummands) => {
   const summands = [];
@@ -9,22 +9,10 @@ const getExpression = (numberOfSummands) => {
   return summands.join(' + ');
 };
 
-const description = 'What is the result of expression?';
-const playRound = () => {
-  const expression = getExpression(3);
-  const userAnswer = +readlineSync.question(`Expression: ${expression} = `);
-  const rightAnswer = utils.sumArrElements(expression.split(' + '));
-  return utils.checkAnswer(userAnswer, rightAnswer);
-};
+const description = '\nWhat is the result of expression?';
+const getQuestion = () => getExpression(3);
+const getRightAnswer = question => `${utils.sumArrElements(question.split(' + '))}`;
 
-const calc = () => {
-  const rounds = 3;
-  let scoreCounter = 0;
-  console.log(description);
-  for (let i = 0; i < rounds; i += 1) {
-    if (playRound()) scoreCounter += 1;
-  }
-  utils.printResults(scoreCounter, rounds);
-};
-
-export default calc;
+const playRound = createGameRound(getQuestion, getRightAnswer);
+const startGame = createGameLauncher(3, description, playRound);
+export default startGame;
