@@ -9,12 +9,17 @@ const listOfGames = Object.keys(games);
 const chooseGame = () => {
   const index = readlineSync.keyInSelect(listOfGames, 'Which game would you like to play?\n');
   if (index === undefined) return undefined;
-
   const chosenGame = listOfGames[index];
   return chosenGame;
 };
 
-const chosenGame = chooseGame();
-if (chosenGame !== undefined) {
-  games[chosenGame]();
-}
+do {
+  const chosenGame = chooseGame();
+  if (chosenGame !== undefined) {
+    games[chosenGame]();
+  } else {
+    break;
+  }
+} while (readlineSync.keyInYN('Would you like to play another game?'));
+
+console.log(`Bye, ${userName}!`);
