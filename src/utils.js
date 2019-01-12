@@ -39,3 +39,5 @@ export const getGreatestCommonDivisor = (firstNum, secondNum) => {
   }
   return result;
 };
+
+export const boolToYesNo = bool => (bool ? 'yes' : 'no');
