@@ -3,7 +3,7 @@ import { createGameLauncher, createGameRound } from '../game-engine';
 
 const isEven = num => num % 2 === 0;
 
-const description = 'Enter "yes" if the number is even and "no" otherwise';
+const description = '\nEnter "yes" if the number is even and "no" otherwise';
 const getQuestion = () => utils.getRandomNum(1, 200);
 const getRightAnswer = question => utils.boolToYesNo(isEven(question));
 
