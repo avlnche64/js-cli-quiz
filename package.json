@@ -1,5 +1,5 @@
 {
-  "name": "js-math-games",
+  "name": "math-games",
   "version": "1.0.0",
   "description": "Simple CLI math games",
   "main": "index.js",
