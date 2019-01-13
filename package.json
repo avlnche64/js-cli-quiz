@@ -1,7 +1,7 @@
 {
   "name": "js-math-games",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple CLI math games",
   "main": "index.js",
   "bin": {
       "math-games": "./dist/launcher.js"
@@ -17,8 +17,9 @@
   },
   "keywords": [
     "cli",
-    "braingame",
-    "quiz"
+    "braingames",
+    "quiz",
+    "mathgames",
   ],
   "author": "Mikhail Gekhman",
   "license": "ISC",
